@@ -7,14 +7,25 @@ $urlRouterProvider.otherwise('login');
 
   .state('lista',{
     url : '/lista',
-    templateUrl : 'templates/lista.html',
-    controller : 'ListagemController'
+    templateUrl : 'templates/lista/lista.html',
+    controller : 'ListagemCtrl',
+    resolve: {
+       load: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load('lista');
+       }]
+     }
   })
+
 
   .state('login',{
     url : '/login',
-    templateUrl : 'templates/login.html',
-    controller : 'LoginController'
+    templateUrl : 'templates/login/login.html',
+    controller : 'LoginCtrl',
+    resolve: {
+       load: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load('login');
+       }]
+     }
   });
 
 
